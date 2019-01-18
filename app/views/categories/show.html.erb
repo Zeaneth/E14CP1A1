@@ -1,26 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1> Categoría: <%= @category.name %> </h1>
+<h1> Category: <%= @category.name %> </h1>
 
-<%= form_with(model: [@category, @product], local: true) do |form| %>
-    <%= form.hidden_field :category_id, value: @category.id %>
-  
-  <div class="field">
-    <%= form.label(:name,"Movie's name") %>
-    <%= form.text_field :name %>
-  </div>
+<h3> New Product/Movie (movies are products too)</h3>
+<%= render 'product_movie_form' %>
 
-  <div class="field">
-    <%= form.label(:price, "Movie's price") %>
-    <%= form.text_field :price %>
-  </div>
+<h2> List of Products </h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to "Destroy", category_product_path(@category, product), method: :delete, class:'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Edit', edit_category_path(@category), class:'btn btn-warning' %> |
+<%= link_to 'Back', categories_path, class:'btn btn-info' %>

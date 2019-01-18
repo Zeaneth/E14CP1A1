@@ -1,0 +1,18 @@
+<%= form_with(model: [@category, @product], local: true) do |form| %>
+    <%= form.hidden_field :category_id, value: @category.id %>
+  
+  <div class="field">
+    <%= form.label(:name,"Movie's name") %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label(:price, "Movie's price") %>
+    <%= form.text_field :price %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

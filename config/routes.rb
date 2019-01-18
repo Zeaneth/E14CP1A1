@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # resources :categories
 
   resources :categories do
-    resources :products
+    resources :products, only: [:create, :destroy]
   end
 
   resources :products, only: [:create]
