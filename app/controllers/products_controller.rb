@@ -1,17 +1,32 @@
 class ProductsController < ApplicationController
     
+    def index
+        @products = Product.all
+    end
+
+    def new
+        @product = Product.new
+    end
+
     def create
-        @product.category_id = @category.id
-        @category = Category.find(params[:category_id])
         @product = Product.new(product_params)
+        @product.category = @category
         if @product.save
-            @category = @product.category
-            redirect_to category_path
-        else
             redirect_to @category
+        else
+            redirect_to root_path
         end
     end
     
+    def update
+    end
+
+    def destroy
+        @product = Product.find(params[:id])
+        @product.destroy
+        redirect_to root_path
+    end
+
     private
 
     def product_params

@@ -6,12 +6,12 @@
     <%= form.hidden_field :category_id, value: @category.id %>
   
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label(:name,"Movie's name") %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label(:price, "Movie's price") %>
     <%= form.text_field :price %>
   </div>
 
