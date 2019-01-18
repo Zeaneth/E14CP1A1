@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    
+    before_action :find_category, only: [:create, :destroy]
     def index
         @products = Product.all
     end
@@ -11,11 +11,8 @@ class ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
         @product.category = @category
-        if @product.save
-            redirect_to @category
-        else
-            redirect_to root_path
-        end
+        @product.save
+        redirect_to @category
     end
     
     def update
@@ -32,4 +29,9 @@ class ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:name, :price, :category_id)
     end
+
+    def find_category
+        @category = Category.find(params[:category_id])
+    end
+
 end
