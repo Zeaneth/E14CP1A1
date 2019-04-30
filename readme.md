@@ -79,3 +79,5 @@
 
 - En *application.html.erb*:
 	- En una vista parcial, agregar un navbar (**fixed**) con bootstrap con los link para acceder al home (index de categorias) y para agregar nueva categoría.
+# Disclaimer!
+> Aquí preferí hacerlo con películas, porque según yo  era más entretenido hacer el ejercicio así... una vez vi que se contaban las películas, me pareció tonto, pero el ejercicio cumple con las funcionalidades requeridas. Whoops!
